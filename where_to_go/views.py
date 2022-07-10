@@ -1,29 +1,23 @@
 from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
+from django.urls import reverse
 
 from places.models import Place
 
 
 def get_places_specs(place):
-    features = []
-    place_for_goejson = {
+    features = [{
         "type": "Feature",
         "geometry": {
             "type": "Point",
-            "coordinates": [],
+            "coordinates": [place.lon, place.lat],
         },
         "properties": {
-            "title": "",
-            "placeId": "",
-            "detailsUrl": "",
+            "title": place.title,
+            "placeId": place.pk,
+            "detailsUrl": reverse('point', args=[place.pk]),
         }
-    }
-
-    features.append(place_for_goejson)
-    place_for_goejson["geometry"]["coordinates"] = [place.lon, place.lat]
-    place_for_goejson["properties"]["title"] = place.title
-    place_for_goejson["properties"]["placeId"] = ""
-    place_for_goejson["properties"]["detailsUrl"] = ""
+    }]
 
     return {
         "type": "FeatureCollection",
@@ -37,7 +31,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def place(request, place_id):
+def point(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     context = {
         "title": place.title,
