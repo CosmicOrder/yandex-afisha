@@ -22,8 +22,8 @@ class Image(models.Model):
     picture = models.ImageField('Картинка')
     order = models.PositiveIntegerField(
         'Позиция',
-        null=True,
-        unique=True)
+        default=0,
+        null=True)
 
     def __str__(self):
         return f'{self.order} ' + self.place.title
