@@ -16,7 +16,7 @@ class Image(models.Model):
     place = models.ForeignKey(
         Place,
         on_delete=models.CASCADE,
-        verbose_name='Картинка',
+        verbose_name='Место',
         related_name='images',
     )
     picture = models.ImageField('Картинка')
