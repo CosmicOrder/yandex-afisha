@@ -20,6 +20,10 @@ class Image(models.Model):
         related_name='images',
     )
     picture = models.ImageField('Картинка')
+    order = models.PositiveIntegerField(
+        'Позиция',
+        null=True,
+        unique=True)
 
     def __str__(self):
-        return f'{self.pk} ' + self.place.title
+        return f'{self.order} ' + self.place.title
