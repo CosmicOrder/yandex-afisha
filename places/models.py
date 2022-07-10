@@ -9,7 +9,7 @@ class Place(models.Model):
     lat = models.FloatField('Широта', null=True)
 
     def __str__(self):
-        return self.title
+        return f'{self.pk} ' + self.title
 
 
 class Image(models.Model):
