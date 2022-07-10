@@ -20,7 +20,7 @@ class Image(models.Model):
         related_name='images',
     )
     picture = models.ImageField('Картинка')
-    order = models.PositiveIntegerField(
+    order = models.PositiveSmallIntegerField(
         'Позиция',
         default=0,
         null=True)
