@@ -2,15 +2,16 @@ import os.path
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+from environs import Env
 
+env = Env()
+env.read_env()
 
-SECRET_KEY = 'django-insecure-5v8o%ve=v-iefdzcw5kbt#c(l-=u3!mhjo^#eg%i9m^hy6!^o_'
+SECRET_KEY = env('SECRET_KEY')
 
+DEBUG = env.bool('DEBUG', False)
 
-DEBUG = True
-
-ALLOWED_HOSTS = ['127.0.0.1']
-
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -54,14 +55,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'where_to_go.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / env('DATABASE_NAME', 'db.sqlite3'),
     }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -78,7 +77,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Europe/Moscow'
@@ -88,7 +86,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'collected_static/')
