@@ -1,6 +1,6 @@
 # Интерактивная карта Москвы
 
-Данный ресурс представляет собой интерактивную карту Москвы, на которой
+Данный [ресурс](http://cosmicorder.pythonanywhere.com/) представляет собой интерактивную карту Москвы, на которой
 отмечены все виды активного отдыха с подробными описаниями, комментариями и
 фотографиями.
 
@@ -30,7 +30,20 @@ python3 -m venv venv
 ```
 pip install -r requirements.txt
 ```
+## Запуск
 
+Чтобы запустить сервер на локальном компьютере, введите в терминале:
+
+- для Windows:
+    ```
+    python manage.py runserver 
+    ```
+- для Linux:
+    ```
+    ./manage.py runserver 
+    ```
+
+После этого переходите по ссылке 127.0.0.1:8000. Там вы увидите главную страницу.
 ## Переменные окружения
 
 Часть настроек проекта берётся из переменных окружения. Чтобы их определить, создайте файл `.env` рядом с `manage.py` и запишите туда данные в таком формате: `ПЕРЕМЕННАЯ=значение`.
@@ -45,7 +58,7 @@ pip install -r requirements.txt
 - `STATIC_URL` — по-умолчанию это `'/static/'`. [Что такое STATIC_URL](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-STATIC_URL).
 - `STATIC_ROOT` — по-умолчанию это `'None'`, т.е. текущая папка. [Что такое STATIC_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-STATIC_ROOT).
 - `MEDIA_URL` — по-умолчанию это `'/media/'`. [Что такое MEDIA_URL](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_URL).
-- `MEDIA_ROOT` — по-умолчанию это `'media'`. [Что такое MEDIA_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_ROOT).
+- `MEDIA_ROOT` — по-умолчанию это `'None'`, т.е. текущая папка. [Что такое MEDIA_ROOT](https://docs.djangoproject.com/en/3.0/ref/settings/#std:setting-MEDIA_ROOT).
 
 ## Цели проекта
 
