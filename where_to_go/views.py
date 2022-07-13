@@ -15,7 +15,7 @@ def get_places_specs(place):
         "properties": {
             "title": place.title,
             "placeId": place.pk,
-            "detailsUrl": reverse('point', args=[place.pk]),
+            "detailsUrl": reverse('place_detail', args=[place.pk]),
         }
     }]
 
@@ -31,7 +31,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def place_processing(request, place_id):
+def place_detail(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     context = {
         "title": place.title,
