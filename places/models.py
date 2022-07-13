@@ -10,7 +10,7 @@ class Place(models.Model):
     lat = models.FloatField('Широта')
 
     def __str__(self):
-        return f'{self.pk} ' + self.title
+        return '{} {}'.format(self.pk, self.title)
 
 
 class Image(models.Model):
@@ -25,5 +25,5 @@ class Image(models.Model):
 
     def __str__(self):
         if self.order:
-            return f'{self.order} ' + self.place.title
+            return '{} {}'.format(self.order, self.place.title)
         return self.place.title
