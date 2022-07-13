@@ -15,7 +15,7 @@ class ImageInline(SortableTabularInline):
 
     def preview(self, obj):
         return format_html('<img src="{}" style="max-height: {};"/>',
-                           mark_safe(obj.picture.url),
+                           obj.picture.url,
                            "200px",
                            )
 
