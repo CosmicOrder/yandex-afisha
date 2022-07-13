@@ -27,4 +27,6 @@ class Image(models.Model):
         null=True)
 
     def __str__(self):
-        return f'{self.order} ' + self.place.title
+        if self.order:
+            return f'{self.order} ' + self.place.title
+        return self.place.title
