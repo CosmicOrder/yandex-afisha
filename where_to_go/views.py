@@ -31,7 +31,7 @@ def index(request):
     return render(request, "index.html", context)
 
 
-def point(request, place_id):
+def place_processing(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     context = {
         "title": place.title,
