@@ -24,8 +24,9 @@ class ImageInline(SortableTabularInline):
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
     ordering = ["pk"]
     inlines = [ImageInline]
+    search_fields = ["place"]
 
 
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
-    pass
+    autocomplete_fields = ["place"]
