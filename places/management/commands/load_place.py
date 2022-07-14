@@ -12,10 +12,10 @@ class Command(BaseCommand):
         parser.add_argument('url_json')
 
     def handle(self, *args, **options):
-        response = requests.get(options['url_json'])
-        response.raise_for_status()
+        json_response = requests.get(options['url_json'])
+        json_response.raise_for_status()
 
-        place_specs = response.json()
+        place_specs = json_response.json()
 
         place, created = Place.objects.get_or_create(
             title=place_specs['title'],
@@ -26,10 +26,10 @@ class Command(BaseCommand):
         )
 
         for i, img_url in enumerate(place_specs['imgs'], 1):
-            response = requests.get(img_url)
-            response.raise_for_status()
+            img_response = requests.get(img_url)
+            img_response.raise_for_status()
 
-            picture = ContentFile(response.content)
+            picture = ContentFile(img_response.content)
 
             image = Image.objects.create(place=place)
 
