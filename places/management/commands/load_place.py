@@ -15,17 +15,17 @@ class Command(BaseCommand):
         response = requests.get(options['url_json'])
         response.raise_for_status()
 
-        json_for_db = response.json()
+        place_specs = response.json()
 
         place, created = Place.objects.get_or_create(
-            title=json_for_db['title'],
-            description_short=json_for_db['description_short'],
-            description_long=json_for_db['description_long'],
-            lon=json_for_db['coordinates']['lng'],
-            lat=json_for_db['coordinates']['lat'],
+            title=place_specs['title'],
+            description_short=place_specs['description_short'],
+            description_long=place_specs['description_long'],
+            lon=place_specs['coordinates']['lng'],
+            lat=place_specs['coordinates']['lat'],
         )
 
-        for i, img_url in enumerate(json_for_db['imgs'], 1):
+        for i, img_url in enumerate(place_specs['imgs'], 1):
             response = requests.get(img_url)
             response.raise_for_status()
 
