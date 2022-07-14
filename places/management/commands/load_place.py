@@ -21,8 +21,10 @@ class Command(BaseCommand):
             title=place_specs['title'],
             description_short=place_specs['description_short'],
             description_long=place_specs['description_long'],
-            lon=place_specs['coordinates']['lng'],
-            lat=place_specs['coordinates']['lat'],
+            defaults={
+                'lon': place_specs['coordinates']['lng'],
+                'lat': place_specs['coordinates']['lat'],
+            }
         )
 
         for i, img_url in enumerate(place_specs['imgs'], 1):
