@@ -29,8 +29,8 @@ class Command(BaseCommand):
             img_response = requests.get(img_url)
             img_response.raise_for_status()
 
-            picture = ContentFile(img_response.content)
+            image_content = ContentFile(img_response.content)
 
             image = Image.objects.create(place=place)
 
-            image.picture.save(f'{i}.jpg', picture)
+            image.picture.save(f'{i}.jpg', image_content)
