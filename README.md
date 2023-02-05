@@ -70,11 +70,11 @@ pip install -r requirements.txt
 
 - для Windows:
     ```
-    python manage.py runserver http://адрес/файла.json
+    python manage.py load_place http://адрес/файла.json
     ```
 - для Linux:
     ```
-    ./manage.py runserver http://адрес/файла.json
+    ./manage.py load_place http://адрес/файла.json
     ```
 
 ## Образец входных данных
